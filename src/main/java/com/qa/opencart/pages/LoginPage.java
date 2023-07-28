@@ -6,6 +6,8 @@ import org.openqa.selenium.WebDriver;
 import com.qa.opencart.constants.Constant;
 import com.qa.opencart.utils.ElementUtil;
 
+import io.qameta.allure.Step;
+
 public class LoginPage {
 
 	private WebDriver driver;
@@ -16,6 +18,7 @@ public class LoginPage {
 	private By password=By.id("input-password");
 	private By loginBtn=By.xpath("//input[@value='Login']");
 	private By forgotPwdLink=By.linkText("Forgotten Password");
+	private By registerLink = By.linkText("Register");
 	
 //Page Constructor:
 	public LoginPage(WebDriver driver)
@@ -25,6 +28,8 @@ public class LoginPage {
 	}
 	
 //Page Actions & Methods:
+	
+	@Step("....getting the login page title.....")
 	public String getLoginPageTitle()
 	{
 		String title=eleUtil.waitForTitleIsAndFetch(Constant.DEFAULT_SHORT_TIME_OUT,Constant.LOGIN_PAGE_TITLE_VALUE);
@@ -33,6 +38,7 @@ public class LoginPage {
 		return title;
 	}
 	
+	@Step("....getting the login page url.....")
 	public String getLoginPageURL()
 	{
 		String url=eleUtil.waitForURLContainsAndFetch(Constant.DEFAULT_SHORT_TIME_OUT,Constant.LOGIN_PAGE_URL_FRACTION_VALUE);
@@ -41,6 +47,7 @@ public class LoginPage {
 		return url;
 	}
 	
+	@Step("....getting the forgot pwd link.....")
 	public boolean isForgotPwdLinkExist()
 	{
 		return eleUtil.waitForElementVisible(forgotPwdLink, Constant.DEFAULT_SHORT_TIME_OUT).isDisplayed();
@@ -48,6 +55,7 @@ public class LoginPage {
 	}
 	
 	//Positive Use-case
+	@Step("login with username : {0} and password: {1}")
 	public AccountsPage doLogin(String un, String pw)
 	{
 		System.out.println("App credentials are:"+un+":"+pw);
@@ -59,5 +67,13 @@ public class LoginPage {
 		//driver.findElement(loginBtn).click();
 		return new AccountsPage(driver);
 	}
+	
+	//navigating to register page
+	@Step("navigating to register page")
+	public RegisterPage navigateToRegisterPage() {
+		eleUtil.doClick(registerLink);
+		return new RegisterPage(driver);
+	}
+
 	
 }

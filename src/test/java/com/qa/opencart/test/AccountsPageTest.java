@@ -1,9 +1,5 @@
 package com.qa.opencart.test;
 
-import static org.testng.Assert.assertEquals;
-
-
-
 import java.util.List;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
@@ -12,10 +8,6 @@ import org.testng.annotations.Test;
 
 import com.qa.opencart.base.BaseTest;
 import com.qa.opencart.constants.Constant;
-
-import static org.testng.Assert.assertEquals;
-
-
 
 public class AccountsPageTest extends BaseTest{
 
