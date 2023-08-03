@@ -37,7 +37,7 @@
 		<classes>
 			<class name="com.qa.opencart.test.RegisterPageTest" />
 		</classes>
-	</test> 
+	</test>
 
 
 </suite>

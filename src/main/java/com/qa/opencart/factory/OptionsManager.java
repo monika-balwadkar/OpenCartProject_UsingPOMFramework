@@ -19,7 +19,9 @@ public class OptionsManager {
 	}
 	
 	public ChromeOptions getChromeOptions() {
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\LENOVO\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe");
 		co=new ChromeOptions();
+		co.setBinary("C:\\Users\\LENOVO\\Downloads\\chrome-win64\\chrome-win64\\chrome.exe");
 		co.addArguments("--remote-allow-origins=*");
 		if(Boolean.parseBoolean(prop.getProperty("headless").trim())) {
 			System.out.println("------Running Chrome in Headless Mode------");

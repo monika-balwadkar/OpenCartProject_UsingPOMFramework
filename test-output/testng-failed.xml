@@ -1,15 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" name="Default test(failed)">
+<suite thread-count="4" parallel="tests" name="Failed suite [Opencart App Test Regression Suite]" guice-stage="DEVELOPMENT" verbose="4">
+  <listeners>
+    <listener class-name="com.qa.opencart.listeners.ExtentReportListener"/>
+    <listener class-name="com.qa.opencart.listeners.TestAllureListener"/>
+    <listener class-name="com.qa.opencart.listeners.AnnotationTransformer"/>
+  </listeners>
+  <test thread-count="4" parallel="tests" name="Product Info Page Test(failed)" verbose="4">
     <classes>
-      <class name="com.qa.opencart.test.LoginPageTest">
+      <class name="com.qa.opencart.test.ProductPageInfoTest">
         <methods>
+          <include name="productInfoPageSetup"/>
           <include name="setup"/>
-          <include name="loginTest"/>
+          <include name="addToCartTest"/>
           <include name="tearDown"/>
         </methods>
-      </class> <!-- com.qa.opencart.test.LoginPageTest -->
+      </class> <!-- com.qa.opencart.test.ProductPageInfoTest -->
     </classes>
-  </test> <!-- Default test(failed) -->
-</suite> <!-- Failed suite [Default suite] -->
+  </test> <!-- Product Info Page Test(failed) -->
+  <test thread-count="4" parallel="tests" name="Account Page Test(failed)" verbose="4">
+    <classes>
+      <class name="com.qa.opencart.test.AccountsPageTest">
+        <methods>
+          <include name="setup"/>
+          <include name="searchProductTest" invocation-numbers="0 0 0 0 1 1 1 1 2 2 2 2 3 3 3 3 4 4 4 4"/>
+          <include name="searchProductCountTest" invocation-numbers="2 2 2 2 3 3 3 3"/>
+          <include name="accPageSetup"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.qa.opencart.test.AccountsPageTest -->
+    </classes>
+  </test> <!-- Account Page Test(failed) -->
+</suite> <!-- Failed suite [Opencart App Test Regression Suite] -->
